@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .resume-container {
+            width: 8.5in;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 25px 40px;
+            text-align: center;
+        }
+
+        .name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .title {
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 14px;
+            justify-content: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .main-content {
+            padding: 25px 40px;
+        }
+
+        .section {
+            margin-bottom: 22px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3498db;
+            margin-bottom: 15px;
+        }
+
+        .summary {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .skill-category {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .skill-category-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .skills-list {
+            color: #444;
+            font-size: 14px;
+        }
+
+        .experience-item, .education-item, .project-item {
+            margin-bottom: 18px;
+        }
+
+        .experience-header, .education-header, .project-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .company-section {
+            margin-bottom: 20px;
+        }
+
+        .company-name, .school-name, .project-name {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .job-title {
+            font-weight: 600;
+            font-style: italic;
+            color: #3498db;
+            font-size: 15px;
+        }
+
+        .education-item .job-title {
+            font-weight: 600;
+            font-style: normal;
+            color: #2c3e50;
+            font-size: 16px;
+        }
+
+        .education-item .school-name {
+            font-weight: normal;
+            color: #555;
+            font-size: 15px;
+            margin-bottom: 5px;
+            font-style: italic;
+        }
+
+        .date {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .responsibilities {
+            list-style-type: none;
+            padding-left: 15px;
+        }
+
+        .responsibilities li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 5px;
+            font-size: 14px;
+            line-height: 1.4;
+            color: #333;
+        }
+
+        .responsibilities li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .achievements-section, .languages-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .achievements-section > div,
+        .languages-section > div {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .achievements-list, .leadership-list {
+            list-style-type: none;
+        }
+
+        .achievements-list li, .leadership-list li, .publication-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .achievements-list li::before, .leadership-list li::before, .publication-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .publication-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .references {
+            font-style: italic;
+            color: #7f8c8d;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .project-description {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.4;
+            padding-left: 15px;
+            margin-top: 3px;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2px;
+        }
+
+        .education-honors {
+            color: #3498db;
+            font-size: 14px;
+            font-style: italic;
+            margin-top: 2px;
+        }
+
+        .combined-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .combined-section > div {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .section-emoji {
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body>
+<div class="resume-container">
+    <div class="header">
+        <div class="name">KASUN KALHARA PERERA</div>
+        <div class="title">Technical Lead | Full Stack Developer | AI-Driven UI Architect</div>
+        <div class="contact-info">
+            <div class="contact-item">📞 +94 77 9219315</div>
+            <div class="contact-item">✉️ adorekasun@gmail.com</div>
+            <div class="contact-item">🔗 <a href="https://www.linkedin.com/in/kalhara-perera-a45026136/">LinkedIn</a></div>
+            <div class="contact-item">💻 <a href="https://github.com/Adore96">GitHub</a></div>
+            <div class="contact-item">🌐 <a href="https://sites.google.com/view/kalhara-perera-cv/home">Portfolio</a></div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="section">
+            <div class="section-title"><span class="section-emoji">📋</span>Professional Summary</div>
+            <div class="summary">
+                Technical Lead specializing in AI-integrated UIs, schema-driven architectures, and full-stack development. Expert in implementing cutting-edge technologies across gaming, logistics, and enterprise platforms. Proven record leading teams to deliver impactful projects like Meta11,
+                eTrieve, and Neurocore that combine innovation with production-ready stability.
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title"><span class="section-emoji">🛠️</span>Technical Expertise</div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <div class="skill-category-title">💻 Languages</div>
+                    <div class="skills-list">TypeScript, JavaScript, Java, C#, Python</div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">🖥️ Frontend</div>
+                    <div class="skills-list">React, Next.js, Angular, Tailwind CSS, ShadCN</div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">⚙️ Backend</div>
+                    <div class="skills-list">Spring Boot, .NET Core, Node.js, REST APIs</div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">🗄️ Databases</div>
+                    <div class="skills-list">MySQL, Firebase, Oracle DB, SQL Server</div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">☁️ DevOps & Cloud</div>
+                    <div class="skills-list">Kubernetes, Docker, GCP, GitHub Actions</div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">🧠 AI & ML</div>
+                    <div class="skills-list">LLM Integrations, Prompt Engineering, Schema-based AI Systems</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title"><span class="section-emoji">👨‍💼</span>Professional Experience</div>
+
+            <div class="company-section">
+                <div class="company-name">🏢 Data Play Corp (formerly Behaviol Pty Ltd)</div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="job-title">Technical Lead</div>
+                        <div class="date">May 2025 - Present</div>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Spearheaded development of <strong>Neurocore</strong>, an AI-assisted CRM system implementing schema-based forms and intelligent conversational interfaces</li>
+                        <li>Architected <strong>eTrieve</strong> data portal utilizing React, TailwindCSS, and GCP Kubernetes for enhanced workflow management</li>
+                        <li>Established CI/CD pipelines and security protocols while mentoring multiple agile development teams</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="job-title">Associate Technical Lead</div>
+                        <div class="date">May 2024 - 2025 May</div>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Led development of <strong>Meta11</strong> fantasy cricket platform with real-time analytics, player tracking, and entitlement systems</li>
+                        <li>Implemented hybrid user interfaces combining structured form builders with LLM assistants for enhanced user experience</li>
+                        <li>Orchestrated migration to Kubernetes-native architecture, improving deployment reliability by 60%</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="job-title">Senior Software Engineer</div>
+                        <div class="date">May 2023 - 2024 May</div>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Developed <strong>Crossdock</strong> logistics platform featuring real-time visualization using Angular and Google Maps APIs</li>
+                        <li>Engineered dynamic vehicle capacity indicators, driver tracking interfaces, and route optimization components</li>
+                        <li>Implemented responsive design patterns ensuring consistent user experience across desktop and mobile platforms</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="job-title">Software Engineer</div>
+                        <div class="date">May 2022 - 2023 May</div>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Built scalable UI components and RESTful integrations for internal logistics management systems</li>
+                        <li>Enhanced driver management interfaces and delivery visualization tools for operational efficiency</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="company-section">
+                <div class="company-name">🏢 Pearson Lanka</div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="job-title">Associate Software Engineer</div>
+                        <div class="date">Jul 2021 - 2022 May</div>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Contributed to backend architecture of Open Vellum 2.0 educational platform using C# .NET and SQL Server</li>
+                        <li>Optimized caching and data workflows, improving system performance by 40% for enhanced user experience</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="company-section">
+                <div class="company-name">🏢 Epic Technologies</div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="job-title">Associate Software Engineer</div>
+                        <div class="date">Jan 2021 - 2021 Jul</div>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Developed modules for Unified Merchant Portal using Angular and Spring Boot technology stack</li>
+                        <li>Supported transaction pipeline development for NTB Mobile Banking platform with secure authentication</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="job-title">Trainee Software Engineer</div>
+                        <div class="date">June 2020 - 2021 Jan</div>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Implemented components for SF-CEFT and Access Control System 2.0 using Java frameworks and MySQL</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title"><span class="section-emoji">🎓</span>Education</div>
+
+            <div class="education-item">
+                <div class="education-header">
+                    <div class="job-title">BSc. (Hons) in Computer Science</div>
+                    <div class="date">2017 - 2021</div>
+                </div>
+                <div class="school-name">General Sir John Kotelawala Defence University</div>
+                <div class="education-honors">Second Class Honors</div>
+            </div>
+
+            <div class="education-item">
+                <div class="education-header">
+                    <div class="job-title">Comprehensive Master in Java Development</div>
+                    <div class="date">2018</div>
+                </div>
+                <div class="school-name">Institute of Java and Software Engineering</div>
+            </div>
+
+            <div class="education-item">
+                <div class="education-header">
+                    <div class="job-title">Diploma in Graphic Designing</div>
+                    <div class="date">2013</div>
+                </div>
+                <div class="school-name">TurnKey IT Campus</div>
+            </div>
+
+            <div class="education-item">
+                <div class="education-header">
+                    <div class="job-title">German Language Certification</div>
+                    <div class="date">2016</div>
+                </div>
+                <div class="school-name">Goethe Institute, Colombo</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title"><span class="section-emoji">🚀</span>Key Projects</div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-name">🏥 Curec - COVID-19 Patient-Doctor Communication Platform</div>
+                    <div class="project-link"><a href="https://sites.google.com/view/kalhara-perera-cv/curec" style="color: #3498db; font-size: 14px;">View Project</a></div>
+                </div>
+                <div class="project-description">
+                    Interactive mobile application connecting healthcare providers and patients during COVID-19 with real-time video calling, location tracking, and priority-based queuing system. Implemented Ministry of Health guidelines for isolation centers.
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-name">🆘 Project 119 - Emergency Communication for Muted People</div>
+                    <div class="project-link"><a href="https://sites.google.com/view/kalhara-perera-cv/project-119" style="color: #3498db; font-size: 14px;">View Project</a></div>
+                </div>
+                <div class="project-description">
+                    Accessibility-focused video call application with location sharing and text-based emergency communication features designed specifically for muted individuals in Sri Lanka.
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-name">🚗 Seats - Carpooling Platform</div>
+                    <div class="project-link"><a href="https://sites.google.com/view/kalhara-perera-cv/research-and-notable-projects" style="color: #3498db; font-size: 14px;">View Project</a></div>
+                </div>
+                <div class="project-description">
+                    Market-focused ride-sharing solution developed for the Sri Lankan transportation sector with strategic positioning to effectively compete with existing service providers.
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-name">👐 Sinhala Sign Language Translator</div>
+                </div>
+                <div class="project-description">
+                    AI-based accessibility research utilizing Artificial Neural Networks to translate Sinhala sign language, with findings published in multiple academic conferences and journals.
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title"><span class="section-emoji">🏆</span>Achievements & Leadership</div>
+
+            <div class="achievements-section">
+                <div>
+                    <div class="skill-category-title">🏅 Achievements</div>
+                    <ul class="achievements-list">
+                        <li><strong>Microsoft Imagine Cup</strong> - Asian Semifinalist, AI for Accessibility (3rd Place)</li>
+                        <li><strong>ICTA ImagineIf 2018</strong> - 1st Runner-up (Carpooling Platform)</li>
+                        <li><strong>Datathon</strong> - 1st Data Science Hackathon in SriLanka.(KDU Representative)</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="skill-category-title">👑 Leadership</div>
+                    <ul class="leadership-list">
+                        <li><strong>President</strong> - BCS Student Chapter, KDU</li>
+                        <li><strong>Vice President</strong> - Electronics Robotics & Innovation Club, KDU</li>
+                        <li><strong>Project Manager</strong> - CoderDojo Sri Lanka</li>
+                        <li><strong>Co-Founder</strong> - YardaGlobal (Digital Marketing Platform)</li>
+                        <li><strong>Swimming Team Captain</strong> - Taxila Central College</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title"><span class="section-emoji">📝</span>Publications</div>
+            <ul class="publication-list">
+                <li>"Sinhala Sign Language Translator Using ANN" - 12th International Research Conference | KDU</li>
+                <li>"Updated Sinhala Sign Language Translator Using ANN" - 9th ICADA Review Paper</li>
+            </ul>
+        </div>
+
+        <div class="references">
+            References Available Upon Request
+        </div>
+    </div>
+</div>
+</body>
+</html>
